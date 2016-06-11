@@ -110,7 +110,7 @@
                         <groupId>com.vaadin</groupId>
                         <artifactId>vaadin-maven-plugin</artifactId>
                         <configuration>
-                            <module>net.studio24.blackbird.MyAppWidgetset</module>
+                            <module>net.studio24.blackbird.BlackbirdWidgetset</module>
                             <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
                             <warSourceDirectory>${vaadin.resource.directory}</warSourceDirectory>
                             <webappDirectory>${vaadin.resource.directory}/VAADIN/widgetsets</webappDirectory>
@@ -118,7 +118,7 @@
                             <compileReport>false</compileReport>
                             <style>OBF</style>
                             <strict>true</strict>
-                            <theme>mytheme</theme>
+                            <theme>blackbird</theme>
                         </configuration>
                         <executions>
                             <execution>
