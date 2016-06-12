@@ -1671,6 +1671,20 @@ div.v-layout.v-horizontal.v-widget {
 	padding-top: 32px;
 }
 
+.blackbird .v-ui[width-range~="801px-1100px"] .valo-menu-part .v-slot-logo, .blackbird .v-ui[width-range~="801px-1100px"] .valo-menu-part .v-slot-logo + .v-spacing {
+	display: none;
+}
+
+.blackbird .v-ui[width-range~="801px-"] .valo-menu-part .user-menu {
+	position: fixed;
+	bottom: 0;
+	margin-bottom: 0;
+}
+
+.blackbird .v-ui[width-range~="0-500px"] .valo-menu .v-menubar-user-menu .v-menubar-menuitem-caption {
+	width: auto;
+}
+
 .blackbird.v-app, .blackbird.v-app-loading {
 	font: 400 15px/1.55 "Open Sans", sans-serif;
 	color: #464646;
