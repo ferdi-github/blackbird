@@ -1,0 +1,9 @@
+@mixin main {
+
+	.v-ui[width-range~="0-800px"] {
+	    .main-screen {
+	      padding-top: $v-unit-size;
+	    }    
+    }
+    
+}
