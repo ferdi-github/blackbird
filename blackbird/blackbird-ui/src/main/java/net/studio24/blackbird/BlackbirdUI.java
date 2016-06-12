@@ -47,6 +47,7 @@ public class BlackbirdUI extends UI {
     protected void showMainView() {
         addStyleName(ValoTheme.UI_WITH_MENU);
         setContent(new MainScreen());
+        getNavigator().navigateTo(getNavigator().getState());
     }
 
     /**
