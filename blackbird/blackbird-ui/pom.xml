@@ -48,6 +48,20 @@
 			<version>2.6</version>
 		</dependency>
 
+		<!-- Session -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
+		<!-- Application dependencies -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>blackbird-commons</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<!-- Custom components -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>

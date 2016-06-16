@@ -25,6 +25,9 @@ import com.vaadin.ui.themes.ValoTheme;
 
 /**
  * Responsive navigation menu presenting a list of available views to the user.
+ * 
+ * @author ferdi-github
+ * @since 1.0
  */
 public class Menu extends CssLayout {
 

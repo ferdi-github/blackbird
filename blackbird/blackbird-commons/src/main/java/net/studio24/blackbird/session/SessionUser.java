@@ -1,19 +1,22 @@
 package net.studio24.blackbird.session;
 
+/**
+ * Represents the user that is bound to the current session.
+ * 
+ * @author ferdi-github
+ * @since 1.0
+ */
 public class SessionUser {
 
-    private String username;
+    private final String username;
 
-    public SessionUser() {
+    public SessionUser(String username) {
         super();
+        this.username = username;
     }
 
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
 }

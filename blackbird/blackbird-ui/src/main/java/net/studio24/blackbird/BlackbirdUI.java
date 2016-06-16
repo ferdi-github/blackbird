@@ -17,9 +17,13 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 
 import net.studio24.blackbird.LoginScreen.LoginListener;
+import net.studio24.blackbird.session.SessionService;
 
 /**
  * The application UI.
+ * 
+ * @author ferdi-github
+ * @since 1.0
  */
 @Theme("blackbird")
 @Widgetset("net.studio24.blackbird.BlackbirdWidgetset")
@@ -35,13 +39,17 @@ public class BlackbirdUI extends UI {
         setLocale(vaadinRequest.getLocale());
         getPage().setTitle("Blackbird");
 
-        setContent(new LoginScreen(new LoginListener() {
+        if (SessionService.get().isAuthenticated()) {
+            showMainView();
+        } else {
+            setContent(new LoginScreen(new LoginListener() {
 
-            @Override
-            public void onLoginSuccessful() {
-                showMainView();
-            }
-        }));
+                @Override
+                public void onLoginSuccessful() {
+                    showMainView();
+                }
+            }));
+        }
     }
 
     protected void showMainView() {

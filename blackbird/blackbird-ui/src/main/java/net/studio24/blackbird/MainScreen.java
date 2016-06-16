@@ -7,6 +7,12 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.UI;
 
+/**
+ * Screen that provides the frame for a menu and application views.
+ * 
+ * @author ferdi-github
+ * @since 1.0
+ */
 public class MainScreen extends HorizontalLayout {
 
     private Menu menu;

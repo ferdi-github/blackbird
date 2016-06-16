@@ -9,7 +9,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
 /**
  * The launcher for embedded webserver.
  * 
- * @author Frederik Fischer
+ * @author ferdi-github
  */
 public class Launcher {
 

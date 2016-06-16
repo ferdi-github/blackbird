@@ -2,6 +2,8 @@ package net.studio24.blackbird;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
@@ -15,6 +17,14 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
+import net.studio24.blackbird.session.SessionService;
+
+/**
+ * Screen that provides a login mask.
+ * 
+ * @author ferdi-github
+ * @since 1.0
+ */
 public class LoginScreen extends CssLayout {
 
     private TextField usernameField;
@@ -26,7 +36,13 @@ public class LoginScreen extends CssLayout {
     public LoginScreen(LoginListener loginListener) {
         this.loginListener = loginListener;
         buildUI();
-        usernameField.focus();
+
+        if (SessionService.get().isRemembered()) {
+            usernameField.setValue(SessionService.get().getRememberedUsername());
+            passwordField.focus();
+        } else {
+            usernameField.focus();
+        }
     }
 
     private void buildUI() {
@@ -91,7 +107,21 @@ public class LoginScreen extends CssLayout {
     }
 
     private void login() {
-        loginListener.onLoginSuccessful();
+        if (StringUtils.isBlank(usernameField.getValue()) || StringUtils.isBlank(passwordField.getValue())) {
+            return;
+        }
+
+        // ServiceLoader<SessionService> loader =
+        // ServiceLoader.load(SessionService.class);
+        // for (SessionService sessionService : loader) {
+        // if (sessionService.signIn("x", "y")) {
+        // loginListener.onLoginSuccessful();
+        // }
+        // }
+
+        if (SessionService.get().signIn(usernameField.getValue(), passwordField.getValue())) {
+            loginListener.onLoginSuccessful();
+        }
     }
 
     public interface LoginListener extends Serializable {

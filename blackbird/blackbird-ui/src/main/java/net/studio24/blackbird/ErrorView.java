@@ -9,6 +9,9 @@ import com.vaadin.ui.themes.Reindeer;
 /**
  * View shown when trying to navigate to a view that does not exist using
  * {@link com.vaadin.navigator.Navigator}.
+ * 
+ * @author ferdi-github
+ * @since 1.0
  */
 public class ErrorView extends VerticalLayout implements View {
 
