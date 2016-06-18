@@ -67,7 +67,7 @@ public class LoginScreen extends CssLayout {
         copyrightLabel.setWidthUndefined();
 
         CssLayout footerLayout = new CssLayout(sourceRefLabel, copyrightLabel);
-        footerLayout.addStyleName(" footer");
+        footerLayout.addStyleName("footer");
 
         addComponent(headerLayout);
         addComponent(loginPanel);
@@ -98,7 +98,7 @@ public class LoginScreen extends CssLayout {
         buttons.setStyleName("buttons");
         loginPanel.addComponent(buttons);
 
-        buttons.addComponent(loginButton = new Button("Login"));
+        buttons.addComponent(loginButton = new Button("Login", FontAwesome.SIGN_IN));
         loginButton.setDisableOnClick(true);
         loginButton.addClickListener(new Button.ClickListener() {
             @Override

@@ -1596,7 +1596,19 @@ div.v-layout.v-horizontal.v-widget {
 	bottom: 0;
 }
 
-.blackbird .v-ui[width-range~="0-800px"] .main-screen {
+.blackbird .main-screen .header {
+	padding: 21px 21px 21px 21px;
+	border-bottom: 2px solid #60a0ea;
+	display: flex;
+	align-items: center;
+}
+
+.blackbird .main-screen .header .toolbar {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.blackbird .main-screen .v-ui[width-range~="0-800px"] .main-screen {
 	padding-top: 32px;
 }
 
