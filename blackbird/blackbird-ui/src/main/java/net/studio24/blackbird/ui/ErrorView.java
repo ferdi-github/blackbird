@@ -1,4 +1,4 @@
-package net.studio24.blackbird;
+package net.studio24.blackbird.ui;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;

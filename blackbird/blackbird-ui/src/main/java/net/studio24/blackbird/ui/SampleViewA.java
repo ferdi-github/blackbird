@@ -1,4 +1,4 @@
-package net.studio24.blackbird;
+package net.studio24.blackbird.ui;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -9,15 +9,15 @@ import com.vaadin.ui.themes.Reindeer;
 /**
  * A sample view.
  */
-public class SampleViewDefault extends VerticalLayout implements View {
+public class SampleViewA extends VerticalLayout implements View {
 
-    public static final String VIEW_NAME = "";
+    public static final String VIEW_NAME = "vA";
 
-    public SampleViewDefault() {
+    public SampleViewA() {
         setMargin(true);
         setSpacing(true);
 
-        Label header = new Label("View Default");
+        Label header = new Label("View A");
         header.addStyleName(Reindeer.LABEL_H1);
         addComponent(header);
     }

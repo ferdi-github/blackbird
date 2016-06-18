@@ -1,4 +1,4 @@
-package net.studio24.blackbird.screens;
+package net.studio24.blackbird.ui.screens;
 
 import java.io.Serializable;
 

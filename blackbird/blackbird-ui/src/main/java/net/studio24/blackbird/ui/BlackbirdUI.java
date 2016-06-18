@@ -1,4 +1,4 @@
-package net.studio24.blackbird;
+package net.studio24.blackbird.ui;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -16,10 +16,10 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 
-import net.studio24.blackbird.screens.LoginScreen;
-import net.studio24.blackbird.screens.MainScreen;
-import net.studio24.blackbird.screens.LoginScreen.LoginListener;
 import net.studio24.blackbird.session.SessionService;
+import net.studio24.blackbird.ui.screens.LoginScreen;
+import net.studio24.blackbird.ui.screens.MainScreen;
+import net.studio24.blackbird.ui.screens.LoginScreen.LoginListener;
 
 /**
  * The application UI.

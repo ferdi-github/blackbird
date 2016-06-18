@@ -1,4 +1,4 @@
-package net.studio24.blackbird.screens;
+package net.studio24.blackbird.ui.screens;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewChangeListener;
@@ -16,10 +16,10 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
-import net.studio24.blackbird.ErrorView;
-import net.studio24.blackbird.SampleViewA;
-import net.studio24.blackbird.SampleViewB;
-import net.studio24.blackbird.SampleViewDefault;
+import net.studio24.blackbird.ui.ErrorView;
+import net.studio24.blackbird.ui.SampleViewA;
+import net.studio24.blackbird.ui.SampleViewB;
+import net.studio24.blackbird.ui.SampleViewDefault;
 
 /**
  * Screen that provides the frame for a menu and application views.
