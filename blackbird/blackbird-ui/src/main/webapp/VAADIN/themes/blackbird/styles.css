@@ -1558,113 +1558,42 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .blackbird .login-screen {
-	background: $editor-background-color;
-	background-image: url(screens/../img/login-bg.jpg);
-	background-size: cover;
-	background-position: 50% 50%;
 	width: 100%;
 	height: 100%;
 }
 
+.blackbird .login-screen .header {
+	border-bottom: 2px solid #60a0ea;
+	width: 100%;
+	height: 36%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.blackbird .login-screen .header .title {
+	text-align: center;
+}
+
 .blackbird .login-screen .login-form {
-	background: white;
-	color: #474747;
-	border-radius: 4px;
-	border: 1px solid #d5d5d5;
-	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
-	border: none;
-	padding: 21px 21px 21px 21px;
+	margin: 16px auto;
 	-webkit-animation: valo-animate-in-fade 1s backwards;
 	-moz-animation: valo-animate-in-fade 1s backwards;
 	animation: valo-animate-in-fade 1s backwards;
 }
 
-.blackbird .login-screen .login-information {
-	display: inline-block;
+.blackbird .login-screen .footer {
+	background: #3d4446;
+	color: #ffffff;
+	font-size: 14px;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 14px 26px;
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 300px;
-	height: 100%;
-	background: #60a0ea;
-	background-color: rgba(96, 160, 234, 0.7);
-	padding: 21px 21px 21px 21px;
-	color: #f2f6fa;
-	-webkit-animation: valo-animate-in-fade 1s 1s backwards;
-	-moz-animation: valo-animate-in-fade 1s 1s backwards;
-	animation: valo-animate-in-fade 1s 1s backwards;
-}
-
-.blackbird .login-screen .login-information h1 {
-	color: inherit;
-}
-
-.blackbird .login-screen .centering-layout {
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	padding-left: 300px;
-}
-
-.blackbird .login-screen .centering-layout .v-slot {
-	height: 100%;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen {
-	height: auto;
-	min-height: 100%;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-information {
-	position: static;
-	width: 100%;
-	height: auto;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-information .v-label {
-	text-align: center;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-information .v-label h1 {
-	margin-top: 0.4em;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .centering-layout {
-	display: block;
-	width: 100%;
-	height: auto;
-	padding-left: 0;
-	padding-top: 60px;
-	padding-bottom: 60px;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-form {
-	width: 400px;
-	max-width: 100%;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-form table {
-	width: 100%;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-form .v-textfield {
-	width: 100% !important;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-form .v-formlayout-captioncell, .blackbird .v-ui[width-range~="0-800px"] .login-screen .login-form .v-formlayout-contentcell, .blackbird .v-ui[width-range~="0-800px"] .login-screen .login-form .v-formlayout-errorcell {
-	display: block;
-	text-align: center;
-	padding-top: 0;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-form .buttons {
-	width: 100%;
-}
-
-.blackbird .v-ui[width-range~="0-800px"] .login-screen .login-form .buttons .v-button {
-	display: block;
-	text-align: center;
+	bottom: 0;
 }
 
 .blackbird .v-ui[width-range~="0-800px"] .main-screen {
