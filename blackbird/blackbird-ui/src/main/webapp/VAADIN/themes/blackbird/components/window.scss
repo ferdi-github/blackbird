@@ -1,0 +1,16 @@
+@mixin window {
+	 
+	 .buttons { 
+	 	border-top: 2px solid #60a0ea;
+	 }	 
+	
+	 .error {
+	     .content {
+		 	background-color: #ea6560;
+		 	color: #ffffff;
+		 }		 
+	     .buttons { 
+		 	border-top: 2px solid #A34643;
+	 	}	
+	 }
+}

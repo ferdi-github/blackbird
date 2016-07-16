@@ -1,9 +1,37 @@
 @mixin main {
 
-	.v-ui[width-range~="0-800px"] {
-	    .main-screen {
-	      padding-top: $v-unit-size;
-	    }    
+	.main-screen {
+
+		 .header {
+		 	//background: #3d4446;
+		 	padding: $v-layout-margin;
+			border-bottom: 2px solid #60a0ea;
+			
+			display: flex;
+			align-items: center;
+			
+			.title {			
+		    }
+		    
+		    .toolbar {
+				display: flex;
+		    	justify-content: flex-end;
+		    }
+		 
+		 }
+		 
+		 
+	
+		.view-content {
+		
+		}
+	
+		.v-ui[width-range~="0-800px"] {
+		    .main-screen {
+		      padding-top: $v-unit-size;
+		    }    
+	    }
+    
     }
     
 }

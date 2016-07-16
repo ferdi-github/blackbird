@@ -1,16 +1,16 @@
-package net.studio24.blackbird;
+package net.studio24.blackbird.ui.screens;
 
 import java.io.Serializable;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.vaadin.event.ShortcutAction;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
@@ -48,39 +48,57 @@ public class LoginScreen extends CssLayout {
     private void buildUI() {
         addStyleName("login-screen");
 
-        Component loginForm = buildLoginForm();
+        Label appTitleLabel = new Label("Blackbird");
+        appTitleLabel.addStyleName(ValoTheme.LABEL_H1);
+        appTitleLabel.addStyleName("title");
+        appTitleLabel.setWidthUndefined();
 
-        VerticalLayout centeringLayout = new VerticalLayout();
-        centeringLayout.setStyleName("centering-layout");
-        centeringLayout.addComponent(loginForm);
-        centeringLayout.setComponentAlignment(loginForm, Alignment.MIDDLE_CENTER);
+        CssLayout headerLayout = new CssLayout(appTitleLabel);
+        headerLayout.addStyleName("header");
 
-        CssLayout loginInformation = buildLoginInformation();
+        Component loginPanel = buildLoginForm();
 
-        addComponent(centeringLayout);
-        addComponent(loginInformation);
+        Label sourceRefLabel = new Label(
+                "Sources on <a href='https://github.com/ferdi-github/blackbird' target='_blank'>GitHub</a>",
+                ContentMode.HTML);
+        sourceRefLabel.setWidthUndefined();
+
+        Label copyrightLabel = new Label("© 2016 studio24");
+        copyrightLabel.setWidthUndefined();
+
+        CssLayout footerLayout = new CssLayout(sourceRefLabel, copyrightLabel);
+        footerLayout.addStyleName("footer");
+
+        addComponent(headerLayout);
+        addComponent(loginPanel);
+        addComponent(footerLayout);
     }
 
     private Component buildLoginForm() {
-        FormLayout loginForm = new FormLayout();
+        VerticalLayout loginPanel = new VerticalLayout();
+        loginPanel.setSpacing(true);
 
-        loginForm.addStyleName("login-form");
-        loginForm.setSizeUndefined();
-        loginForm.setMargin(false);
+        loginPanel.addStyleName("login-form");
+        loginPanel.setSizeUndefined();
+        loginPanel.setMargin(true);
 
         usernameField = new TextField("Username");
+        usernameField.setIcon(FontAwesome.USER);
+        usernameField.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
         usernameField.setWidth(15, Unit.EM);
-        loginForm.addComponent(usernameField);
+        loginPanel.addComponent(usernameField);
 
         passwordField = new PasswordField("Password");
+        passwordField.setIcon(FontAwesome.LOCK);
+        passwordField.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
         passwordField.setWidth(15, Unit.EM);
-        loginForm.addComponent(passwordField);
+        loginPanel.addComponent(passwordField);
 
         CssLayout buttons = new CssLayout();
         buttons.setStyleName("buttons");
-        loginForm.addComponent(buttons);
+        loginPanel.addComponent(buttons);
 
-        buttons.addComponent(loginButton = new Button("Login"));
+        buttons.addComponent(loginButton = new Button("Login", FontAwesome.SIGN_IN));
         loginButton.setDisableOnClick(true);
         loginButton.addClickListener(new Button.ClickListener() {
             @Override
@@ -95,30 +113,15 @@ public class LoginScreen extends CssLayout {
         loginButton.setClickShortcut(ShortcutAction.KeyCode.ENTER);
         loginButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
-        return loginForm;
-    }
-
-    private CssLayout buildLoginInformation() {
-        CssLayout loginInformation = new CssLayout();
-        loginInformation.setStyleName("login-information");
-        Label loginInfoText = new Label("<h1>Blackbird</h1>", ContentMode.HTML);
-        loginInformation.addComponent(loginInfoText);
-        return loginInformation;
+        VerticalLayout centeringLayout = new VerticalLayout(loginPanel);
+        centeringLayout.setComponentAlignment(loginPanel, Alignment.MIDDLE_CENTER);
+        return centeringLayout;
     }
 
     private void login() {
         if (StringUtils.isBlank(usernameField.getValue()) || StringUtils.isBlank(passwordField.getValue())) {
             return;
         }
-
-        // ServiceLoader<SessionService> loader =
-        // ServiceLoader.load(SessionService.class);
-        // for (SessionService sessionService : loader) {
-        // if (sessionService.signIn("x", "y")) {
-        // loginListener.onLoginSuccessful();
-        // }
-        // }
-
         if (SessionService.get().signIn(usernameField.getValue(), passwordField.getValue())) {
             loginListener.onLoginSuccessful();
         }
