@@ -6,6 +6,8 @@ public interface TestMessages {
 
     String messageCamelCase();
 
+    String parameterizedMessage(String stringVal, Integer intVal);
+
     String missingMessage();
 
 }

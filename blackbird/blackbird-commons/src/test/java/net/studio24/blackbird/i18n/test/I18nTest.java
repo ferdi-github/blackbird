@@ -10,7 +10,7 @@ import org.junit.rules.ExpectedException;
 
 import net.studio24.blackbird.i18n.I18n;
 
-public class I18nMessagesTest {
+public class I18nTest {
 
     @Rule
     public ExpectedException exceptions = ExpectedException.none();
@@ -23,6 +23,8 @@ public class I18nMessagesTest {
         assertThat(messagesProxy).isNotNull();
         assertThat(messagesProxy.message()).isEqualTo("Message");
         assertThat(messagesProxy.messageCamelCase()).isEqualTo("Message Camel Case");
+        assertThat(messagesProxy.parameterizedMessage("abc", Integer.valueOf(123)))
+                .isEqualTo("StringVal=abc, IntVal=123");
     }
 
     @Test

@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -110,6 +111,9 @@ public interface I18n {
             if (propertyValue == null) {
                 throw new IllegalStateException(
                         "The messages file does not contain a property for the message " + propertyName);
+            }
+            if (args != null && args.length > 0) {
+                propertyValue = MessageFormat.format(propertyValue, args);
             }
             return propertyValue;
         }
