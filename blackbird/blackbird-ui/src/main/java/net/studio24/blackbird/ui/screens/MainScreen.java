@@ -5,21 +5,19 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
+import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
-import net.studio24.blackbird.ui.ErrorView;
-import net.studio24.blackbird.ui.SampleViewA;
-import net.studio24.blackbird.ui.SampleViewB;
-import net.studio24.blackbird.ui.SampleViewDefault;
+import net.studio24.blackbird.ui.views.ApplicationView;
+import net.studio24.blackbird.ui.views.DefaultView;
+import net.studio24.blackbird.ui.views.ErrorView;
+import net.studio24.blackbird.ui.views.ViewRegistry;
 
 /**
  * Screen that provides the frame for a menu and application views.
@@ -52,22 +50,13 @@ public class MainScreen extends VerticalLayout {
         appTitleLabel.addStyleName("title");
         appTitleLabel.setWidthUndefined();
 
-        Button logoutButton = new Button("Logout", FontAwesome.SIGN_OUT);
-        logoutButton.addStyleName(ValoTheme.BUTTON_QUIET);
-
-        logoutButton.addClickListener(new ClickListener() {
-
-            @Override
-            public void buttonClick(ClickEvent event) {
-                VaadinSession.getCurrent().getSession().invalidate();
-                Page.getCurrent().reload();
-            }
-        });
-
         viewMenu = new ViewMenu(navigator);
-        viewMenu.addView(new SampleViewDefault(), SampleViewDefault.VIEW_NAME, "Default", FontAwesome.EDIT);
-        viewMenu.addView(new SampleViewA(), SampleViewA.VIEW_NAME, SampleViewA.VIEW_NAME, FontAwesome.EDIT);
-        viewMenu.addView(new SampleViewB(), SampleViewB.VIEW_NAME, SampleViewB.VIEW_NAME, FontAwesome.INFO_CIRCLE);
+        viewMenu.addView(new DefaultView(), DefaultView.VIEW_ID, DefaultView.VIEW_NAME, FontAwesome.HOME);
+
+        // TODO define order
+        for (ApplicationView view : ViewRegistry.getRegisteredViews()) {
+            viewMenu.addView(view.getViewClass(), view.getId(), view.getTitle(), view.getIcon());
+        }
 
         Label spacer = new Label(" ");
         spacer.setWidth(21, Unit.PIXELS);
@@ -78,7 +67,14 @@ public class MainScreen extends VerticalLayout {
         final MenuItem userItem = userMenu.addItem("", FontAwesome.USER, null);
         userItem.setStyleName(ValoTheme.BUTTON_ICON_ONLY);
 
-        userMenu.addItem("Logout", FontAwesome.SIGN_OUT, null);
+        userMenu.addItem("Logout", FontAwesome.SIGN_OUT, new Command() {
+
+            @Override
+            public void menuSelected(MenuItem selectedItem) {
+                VaadinSession.getCurrent().getSession().invalidate();
+                Page.getCurrent().reload();
+            }
+        });
 
         CssLayout toolbarLayout = new CssLayout(viewMenu, spacer, userMenu);
         toolbarLayout.setWidth(100, Unit.PERCENTAGE);

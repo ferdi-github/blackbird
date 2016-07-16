@@ -1,5 +1,6 @@
 @import "screens/login.scss";
 @import "screens/main.scss";
+@import "components/window.scss";
 @import "components/menu.scss";
 @import "blackbird.scss";
 @import "addons.scss";
@@ -14,6 +15,7 @@ $v-layout-margin: $v-layout-margin-top $v-layout-margin-right $v-layout-margin-b
   @include login;
   @include main;
   @include menu;
+  @include window;
   @include blackbird;
 
 }
