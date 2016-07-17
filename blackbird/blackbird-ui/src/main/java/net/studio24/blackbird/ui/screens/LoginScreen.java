@@ -83,13 +83,13 @@ public class LoginScreen extends CssLayout {
         loginPanel.setSizeUndefined();
         loginPanel.setMargin(true);
 
-        usernameField = new TextField(LoginMessages.get().username());
+        usernameField = new TextField(LoginScreenMessages.get().username());
         usernameField.setIcon(FontAwesome.USER);
         usernameField.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
         usernameField.setWidth(15, Unit.EM);
         loginPanel.addComponent(usernameField);
 
-        passwordField = new PasswordField(LoginMessages.get().password());
+        passwordField = new PasswordField(LoginScreenMessages.get().password());
         passwordField.setIcon(FontAwesome.LOCK);
         passwordField.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
         passwordField.setWidth(15, Unit.EM);
@@ -99,7 +99,7 @@ public class LoginScreen extends CssLayout {
         buttons.setStyleName("buttons");
         loginPanel.addComponent(buttons);
 
-        buttons.addComponent(loginButton = new Button(LoginMessages.get().login(), FontAwesome.SIGN_IN));
+        buttons.addComponent(loginButton = new Button(LoginScreenMessages.get().login(), FontAwesome.SIGN_IN));
         loginButton.setDisableOnClick(true);
         loginButton.addClickListener(new Button.ClickListener() {
             @Override
@@ -132,10 +132,10 @@ public class LoginScreen extends CssLayout {
         void onLoginSuccessful();
     }
 
-    public interface LoginMessages {
+    public interface LoginScreenMessages {
 
-        public static LoginMessages get() {
-            return I18n.from(LoginMessages.class);
+        public static LoginScreenMessages get() {
+            return I18n.from(LoginScreenMessages.class);
         }
 
         String username();
