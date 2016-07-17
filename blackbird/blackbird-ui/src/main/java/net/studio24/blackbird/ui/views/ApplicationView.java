@@ -1,8 +1,19 @@
 package net.studio24.blackbird.ui.views;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.ServiceLoader;
+
 import com.vaadin.navigator.View;
 import com.vaadin.server.FontIcon;
 
+/**
+ * Interface to be implemented by all application views.
+ * 
+ * @author ferdi-github
+ * @since 1.0
+ */
 public interface ApplicationView {
 
     /**
@@ -32,5 +43,17 @@ public interface ApplicationView {
      * @return the view class.
      */
     Class<? extends View> getViewClass();
+
+    /**
+     * Get all registered application views.
+     * 
+     * @return the list of registered application views.
+     */
+    public static Collection<ApplicationView> getRegisteredViews() {
+        ServiceLoader<ApplicationView> loader = ServiceLoader.load(ApplicationView.class);
+        List<ApplicationView> views = new ArrayList<>();
+        loader.forEach((view) -> views.add(view));
+        return views;
+    }
 
 }

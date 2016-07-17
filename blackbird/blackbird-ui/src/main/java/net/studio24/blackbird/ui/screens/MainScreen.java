@@ -14,10 +14,10 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
+import net.studio24.blackbird.i18n.I18n;
 import net.studio24.blackbird.ui.views.ApplicationView;
 import net.studio24.blackbird.ui.views.DefaultView;
 import net.studio24.blackbird.ui.views.ErrorView;
-import net.studio24.blackbird.ui.views.ViewRegistry;
 
 /**
  * Screen that provides the frame for a menu and application views.
@@ -54,7 +54,7 @@ public class MainScreen extends VerticalLayout {
         viewMenu.addView(new DefaultView(), DefaultView.VIEW_ID, DefaultView.VIEW_NAME, FontAwesome.HOME);
 
         // TODO define order
-        for (ApplicationView view : ViewRegistry.getRegisteredViews()) {
+        for (ApplicationView view : ApplicationView.getRegisteredViews()) {
             viewMenu.addView(view.getViewClass(), view.getId(), view.getTitle(), view.getIcon());
         }
 
@@ -67,7 +67,7 @@ public class MainScreen extends VerticalLayout {
         final MenuItem userItem = userMenu.addItem("", FontAwesome.USER, null);
         userItem.setStyleName(ValoTheme.BUTTON_ICON_ONLY);
 
-        userMenu.addItem("Logout", FontAwesome.SIGN_OUT, new Command() {
+        userMenu.addItem(MainScreenMessages.get().logout(), FontAwesome.SIGN_OUT, new Command() {
 
             @Override
             public void menuSelected(MenuItem selectedItem) {
@@ -103,5 +103,14 @@ public class MainScreen extends VerticalLayout {
         }
 
     };
+
+    public interface MainScreenMessages {
+
+        public static MainScreenMessages get() {
+            return I18n.from(MainScreenMessages.class);
+        }
+
+        String logout();
+    }
 
 }

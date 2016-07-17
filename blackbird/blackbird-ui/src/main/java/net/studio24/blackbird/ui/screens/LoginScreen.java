@@ -17,6 +17,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
+import net.studio24.blackbird.i18n.I18n;
 import net.studio24.blackbird.session.SessionService;
 
 /**
@@ -82,13 +83,13 @@ public class LoginScreen extends CssLayout {
         loginPanel.setSizeUndefined();
         loginPanel.setMargin(true);
 
-        usernameField = new TextField("Username");
+        usernameField = new TextField(LoginScreenMessages.get().username());
         usernameField.setIcon(FontAwesome.USER);
         usernameField.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
         usernameField.setWidth(15, Unit.EM);
         loginPanel.addComponent(usernameField);
 
-        passwordField = new PasswordField("Password");
+        passwordField = new PasswordField(LoginScreenMessages.get().password());
         passwordField.setIcon(FontAwesome.LOCK);
         passwordField.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
         passwordField.setWidth(15, Unit.EM);
@@ -98,7 +99,7 @@ public class LoginScreen extends CssLayout {
         buttons.setStyleName("buttons");
         loginPanel.addComponent(buttons);
 
-        buttons.addComponent(loginButton = new Button("Login", FontAwesome.SIGN_IN));
+        buttons.addComponent(loginButton = new Button(LoginScreenMessages.get().login(), FontAwesome.SIGN_IN));
         loginButton.setDisableOnClick(true);
         loginButton.addClickListener(new Button.ClickListener() {
             @Override
@@ -129,5 +130,18 @@ public class LoginScreen extends CssLayout {
 
     public interface LoginListener extends Serializable {
         void onLoginSuccessful();
+    }
+
+    public interface LoginScreenMessages {
+
+        public static LoginScreenMessages get() {
+            return I18n.from(LoginScreenMessages.class);
+        }
+
+        String username();
+
+        String password();
+
+        String login();
     }
 }
